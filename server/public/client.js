@@ -35,14 +35,8 @@ function docReady() {
 
 } // end docReady
 
-// Step 1: on submit, get input values and add to Employees list
-// target submit button and create event listener
-// get input values
-// append row and val to tbody
-// set input val to ''
-// create new employee
-// push new employee to employees list
 
+// add employees to list
 function addEmployee() {
     console.log('in addEmployee');
 
@@ -52,10 +46,10 @@ function addEmployee() {
     idInput = $('#id').val();
     titleInput = $('#title').val();
     salaryInput = $('#salary').val();
-    salaryInput = Math.floor(Number(salaryInput));
-    console.log('input', fnameInput, lnameInput, idInput, titleInput, salaryInput);
+    salaryInput = Number(salaryInput);
+    //console.log('input', fnameInput, lnameInput, idInput, titleInput, salaryInput);
 
-    // display input values on table
+    // display input values 
     $('#employeesList').append(`
         <tr class="employeeRow">
             <td class="fName">${fnameInput}</td>
@@ -74,7 +68,7 @@ function addEmployee() {
     $('#title').val('');
     $('#salary').val('');
 
-    // create new employee using class constructor
+    // create new employee 
     let newEmployee = new EmployeeInfo(fnameInput, lnameInput, idInput, titleInput, salaryInput);
     console.log('temp:', newEmployee);
 
@@ -83,6 +77,7 @@ function addEmployee() {
     //employeesList.push(temp);
     console.log('employeesList:', employeesList);
 
+    // get calculation
     calculateMonthlyCosts();
 
 } // end addEmployee
