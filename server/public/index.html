@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Salary Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="jquery.js"></script>
+    <script src="client.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <header class="row row-header">
+        <h1>Salary Calculator</h1>
+    </header>
+
+    <div class="row row-content">
+        <div id="addEmployeeForm">
+            <h2>Add Employees</h2>
+            <div class="form-group">
+                <label for="fname">First Name:</label>
+                <input type="text" name="fname" placeholder="First Name" id="fname">
+            </div>
+            <div class="form-group">
+                <label for="fname">Last Name:</label>
+                <input type="text" placeholder="Last Name" id="lname">
+            </div>
+            <div class="form-group">
+                <label for="fname">ID:</label>
+                <input type="text" placeholder="ID" id="id">
+            </div>
+            <div class="form-group">
+                <label for="fname">Title:</label>
+                <input type="text" placeholder="Title" id="title">
+            </div>
+            <div class="form-group">
+                <label for="fname">Salary:</label>
+                <input type="number" placeholder="Annual Salary" id="salary">
+            </div>
+                <button id="submit" class="btn btn-primary">Submit</button>
+
+        </div>
+    </div>
+
+    <div class="row row-content">
+        <div>
+            <h2>Employees</h2>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Annual Salary</th>
+                        <th>Delete Employee</th>
+                    </tr>
+                </thead>
+                <tbody id="employeesList">
+                    <!-- <tr class="employeeRow">
+                        <td class="fName">Jen</td>
+                        <td class="lName">Barber</td>
+                        <td class="id">4521</td>
+                        <td class="title">Team Lead</td>
+                        <td>80,000</td>
+                        <td><button class="deleteButton">Delete</button></td>
+                    </tr>
+                    <tr class="employeeRow">
+                        <td class="fName">Maurice</td>
+                        <td class="lName">Moss</td>
+                        <td class="id">8724</td>
+                        <td class="title">Support Team</td>
+                        <td class="salary">58,000</td>
+                        <td><button class="deleteButton">Delete</button></td>
+                    </tr>
+                    <tr class="employeeRow">
+                        <td class="fName">Roy</td>
+                        <td class="lName">Smith</td>
+                        <td class="id">9623</td>
+                        <td class="title">Quality Assurance</td>
+                        <td class="salary">48,000</td>
+                        <td><button class="deleteButton">Delete</button></td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row row-content">
+        <div>
+            <h2>Total Monthly: <span id="totalMonthlyCost">0</span></h2>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
