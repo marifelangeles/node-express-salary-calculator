@@ -126,6 +126,12 @@ function calculateMonthlyCosts() {
     } // end monthlySalary loop
 
     // target span and change text to total
-    $('#totalMonthlyCost').text(` $ ${total.toFixed(2)}`);
+    $('#totalMonthlyCost').text(` $${total.toFixed(2)}`);
+
+    // if total exceeds $20,000, change background color to red
+    if (total >20000) {
+        $('#totalMonthlyCost').css('color', 'red');
+        $('#exceedsBudget').show();
+    }
 
 } // end calculateMonthlyCosts

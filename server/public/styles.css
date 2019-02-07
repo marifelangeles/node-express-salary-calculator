@@ -5,3 +5,14 @@
 #submit {
     margin-top: 1rem;
 }
+
+#exceedsBudget{
+    display: none;
+    color: red;
+    font-weight: bold;
+}
+
+#theader{
+    display: none;
+}
+
