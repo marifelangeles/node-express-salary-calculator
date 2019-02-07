@@ -94,6 +94,9 @@ function deleteEmployee() {
     console.log('employeesList[rowIndex]', employeesList[rowIndex]);
     employeesList.splice(rowIndex, 1);
 
+    // remove employee row from DOM
+    $(this).closest('tr').remove();
+
     // calculate data
     calculateMonthlyCosts();
 
@@ -101,40 +104,28 @@ function deleteEmployee() {
 
 function calculateMonthlyCosts() {
     console.log('in calculateMonthlyCosts');
-    //console.log('input:', fnameInput, lnameInput, idInput, titleInput, salaryInput);
 
     let monthlySalary = [];
 
+    // loop through employees
     for (let i = 0; i < employeesList.length; i++) {
-        console.log('employeesList[i]:', Math.floor(employeesList[i].salary / 12));
-
-        monthlySalary.push(Math.floor(employeesList[i].salary / 12));
+        // get annual salary and divide by 12\
+        // push to monthly salary array
+        monthlySalary.push(employeesList[i].salary / 12);
         console.log('monthlySalary:', monthlySalary);
 
     } // end employeesList loop
 
     let total = 0;
+    // loop through monthly salary array
     for (let employee in monthlySalary) {
         console.log('in monthlySalary');
-
+        // add each value to total
         total += monthlySalary[employee];
         console.log('total:', total);
     } // end monthlySalary loop
 
-    $('#totalMonthlyCost').text(` $ ${total}`);
+    // target span and change text to total
+    $('#totalMonthlyCost').text(` $ ${total.toFixed(2)}`);
 
 } // end calculateMonthlyCosts
-
-
-// STEP 3: Create a delete button that removes an employee from the DOM.
-// target #employeesList, if it has .deleteButton, on click...
-// target this employeeRow and remove closest tr
-
-// delete target employee from master employeesList
-
-
-
-// STEP 4: Once the employee is deleted, update the total spend on salaries account for this employee's removal. 
-// in deleteEmployee...
-// when delete is clicked, 
-// target #totalMonthlyCost replace text with new total
