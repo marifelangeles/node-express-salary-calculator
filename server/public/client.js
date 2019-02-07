@@ -17,6 +17,7 @@ class EmployeeInfo {
     }
 }
 
+// master array
 let employeesList = [];
 
 
@@ -24,19 +25,16 @@ $(document).ready(docReady);
 
 
 function docReady() {
-    console.log('jq');
 
+    // when submit is clicked, add employee 
     $('#submit').on('click', addEmployee);
-    //$('#submit').on('click', storeEmployeeInfo);
 
-    //$('#submit').on('click', calculateMonthlyCosts);
-
+    // when delete is clicked, delete employee
     $('#employeesList').on('click', '.deleteButton', deleteEmployee);
 
 } // end docReady
 
 
-// add employees to list
 function addEmployee() {
     console.log('in addEmployee');
 
@@ -49,7 +47,7 @@ function addEmployee() {
     salaryInput = Number(salaryInput);
     //console.log('input', fnameInput, lnameInput, idInput, titleInput, salaryInput);
 
-    // display input values 
+    // display input values on DOM 
     $('#employeesList').append(`
         <tr class="employeeRow">
             <td class="fName">${fnameInput}</td>
@@ -72,32 +70,38 @@ function addEmployee() {
     let newEmployee = new EmployeeInfo(fnameInput, lnameInput, idInput, titleInput, salaryInput);
     console.log('temp:', newEmployee);
 
-    // add new employee data to master employeesList
+    // add new employee to master array
     employeesList.push(newEmployee);
-    //employeesList.push(temp);
     console.log('employeesList:', employeesList);
 
-    // get calculation
+    // calcalate data
     calculateMonthlyCosts();
 
 } // end addEmployee
 
 
-// STEP 2: Using the stored information, calculate monthly costs and append this to the to DOM
-// target button, on submit...
-// create temp monthly salary array
-// loop through annual salary
-// divide annual salary by 12
-// assign to monthly salary array
-// loop through monthly salary 
-// create monthly cost = 0
-// add to monthly cost 
-// get #total monthly cost and append total
+function deleteEmployee() {
+    console.log('in deleteEmployee');
 
+    // https://stackoverflow.com/questions/306583/how-to-get-the-children-of-the-this-selector
+
+    // get table row index
+    //console.log('this', $(this) );
+    let rowIndex = $(this).closest('tr').index();
+    console.log('rowIndex', rowIndex);
+
+    // remove employee with rowIndex from array
+    console.log('employeesList[rowIndex]', employeesList[rowIndex]);
+    employeesList.splice(rowIndex, 1);
+
+    // calculate data
+    calculateMonthlyCosts();
+
+} // end deleteEmployee
 
 function calculateMonthlyCosts() {
     console.log('in calculateMonthlyCosts');
-    console.log('input:', fnameInput, lnameInput, idInput, titleInput, salaryInput);
+    //console.log('input:', fnameInput, lnameInput, idInput, titleInput, salaryInput);
 
     let monthlySalary = [];
 
@@ -127,28 +131,7 @@ function calculateMonthlyCosts() {
 // target this employeeRow and remove closest tr
 
 // delete target employee from master employeesList
-function deleteEmployee() {
-    console.log('in deleteEmployee');
-    console.log('employeesList:', employeesList);
 
-    // https://stackoverflow.com/questions/306583/how-to-get-the-children-of-the-this-selector
-    
-    // get table row index
-    let rowIndex = $(this).closest('tr').index();
-    console.log('rowIndex', rowIndex);
-    console.log($(this).closest('tr').index());
-
-    // loop through array
-    // remove i from employeesList
-
-    
-
-    // remove closest tr when current delete button is clicked
-    $(this).closest('tr').remove();
-
-    calculateMonthlyCosts();
-
-} // end deleteEmployee
 
 
 // STEP 4: Once the employee is deleted, update the total spend on salaries account for this employee's removal. 
